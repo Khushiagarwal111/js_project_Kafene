@@ -1,0 +1,166 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: #393838;
+    }
+    
+
+td,
+th {
+padding: 0.8rem 1.2rem;
+text-align: left;
+}
+
+
+
+.Users {
+margin-top: 15vh;
+margin-left: 6vh;
+padding: 10px 10px;
+}
+.search-box{
+    margin-left:2vw;  
+}
+
+#search-box-input {
+width: 40%;
+border: 0;
+outline: none;
+font-size: 16px;
+border-bottom: 2px solid rgba(0, 0, 255, 0.4);
+margin:15px 10px;
+padding:12px 15px;
+
+}
+
+#reset {
+color: white;
+border:0px;
+background-color: #20b883;
+padding: 15px 40px;
+border-radius:25px;
+outline: none;
+font-size: 14px;
+cursor: pointer;
+margin-left:20px;
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+th {
+background-color: #f6f7fb;
+color:#101 !important;
+}
+
+.user-data {
+margin-left: 7vw;
+margin-right: 7vw;
+
+}
+
+/* User table  */
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
+    height: 6vh;
+    }
+    
+#table-headers {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+}
+
+
+tbody tr {
+    
+    border-bottom: 6px solid #f6f7fb;
+    cursor: pointer;
+}
+
+
+
+.hide-row{
+    display:none;
+}
+
+.data-row {
+
+    height:10vh;
+
+}.table-heading-1{
+
+    margin-left:10%;
+    margin-right:10%;
+    color:#101;
+}
+#tbody{
+    color:yelloe;
+    width:80vw; 
+}
+
+.hide-row{
+    display:none;
+}
+#table-data {
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+@-moz-document url-prefix() {
+    #table-data {
+        overflow-y: scroll;
+    }
+}
+.id{
+  
+    width:5vw;
+    padding-left:10px;
+    text-align:left;
+    color: #8c8c8c;
+
+}
+
+
+.User-Avatar{
+    text-align:left;
+    width: 13vw;
+    padding-left:20px;
+    padding-right:30px;
+}
+
+ .UserName{
+    color: #8c8c8c;
+    width:25vw;
+    text-align:left;
+    padding-left:10px;
+
+}
+ .DOB{
+    text-align:left;
+    color:#111;
+    width: 12vw;
+    padding-left:20px;
+}
+  .Gender{
+    color: #8c8c8c;
+    text-align:left;
+    width: 10vw;    
+    padding-left:10px;
+}
+.Location {
+    color: #8c8c8c;
+    padding-left:10px;
+    width: 25vw;
+}

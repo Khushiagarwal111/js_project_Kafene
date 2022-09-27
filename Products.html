@@ -1,0 +1,109 @@
+<html>
+ <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title></title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../css/style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+<body>
+<header>
+  <nav>
+    <ul>
+        <div class="menu" id="kafene"><img src="https://edu-web-fundamentals.web.app/static/media/logo.58169365.png" /> Kafene</div>
+        <li class="nav" ><a href="./order.html">Orders</a></li>
+        <li class="nav" ><a id="products-tab" href="./Products.html">Products</a></li>
+        <li class="nav" ><a href="./Users.html">Users</a></li>
+        <li class="nav" id="logout-show" onclick="logout()"><a>Logout</a></li>
+    </ul>
+
+  </nav>
+</header>
+<main>
+  <div class="main-heading-of-page">
+    <h1>Products</h1>
+  </div>
+<div class="main">
+<section>
+    <div class="filter">
+        <h3>Filter</h3>
+        <div class="count">Count:<span id="count"> </span></div>
+    </div>
+    <div class="checkbox-div">
+        <label class="check" for="expired">
+            <input type="checkbox" class="checkbox" name="expired" checked id="expired" />
+            Expired</label>
+        <label class="check" for="low-stock">
+            <input type="checkbox" class="checkbox" name="low-stock" checked id="low-stock" />
+            Low stock</label>
+    </div>
+</section>
+
+<section class="table-data-container">
+    <div class="tale-header">
+        <table>
+            <tr class="table-heading1">
+              <th id="productId" class="gray10">ID</th>
+              <th id="productName" class="black20">Product Name     </th>
+              <th id="productbrand"  class="gray20">Product Brand</th>
+              <th id="expiry" class="black">   Expiry Date</th>
+              <th  id="unitPrice" class="gray"> Unit Price</th>
+              <th class="gray">stock</th>
+          </tr>
+        </table>
+    </div>
+    <div id="table-data">
+        <table>
+            <tbody id="tbody">
+                <tr class="">
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</main>
+<script src="../js/Products.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

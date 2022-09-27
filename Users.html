@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>User Page</title>
+        <meta name="description" content="">
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/Users.css">
+    <style>
+
+
+/* User table  */
+#table-headers {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+}
+
+#table-data {
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+@-moz-document url-prefix() {
+    #table-data {
+        overflow-y: scroll;
+    }
+}
+.id{
+  
+    width:5vw;
+    padding-left:10px;
+    text-align:left;
+    color: #8c8c8c;
+
+}
+
+
+.User-Avatar{
+    text-align:left;
+    width: 13vw;
+    padding-left:20px;
+    padding-right:30px;
+}
+
+ .UserName{
+    color: #8c8c8c;
+    width:25vw;
+    text-align:left;
+    padding-left:10px;
+
+}
+ .DOB{
+    text-align:left;
+    color:#111;
+    width: 12vw;
+    padding-left:20px;
+}
+  .Gender{
+    color: #8c8c8c;
+    text-align:left;
+    width: 10vw;    
+    padding-left:10px;
+}
+.Location {
+    color: #8c8c8c;
+    padding-left:10px;
+    width: 25vw;
+} 
+
+</style>
+</head>
+
+<body>
+<header style="height:10% ;">
+    <nav>
+        <ul>
+            <div class="menu" id="kafene"><img src="https://edu-web-fundamentals.web.app/static/media/logo.58169365.png"/> Kafene</div>
+
+            <li class="nav" id="orders"><a href="./order.html">Orders</a></li>
+            <li class="nav"><a href="./Products.html">Products</a></li>
+            <li class="nav"><a id="users-tab" href="./Users.html">Users</a></li>
+            <li class="nav" id="logout-show"><a>Logout</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<div class="Users">
+    <h1>Users</h1>
+    <div class="search-box">
+        <input class="search-box-input" id="search-box-input" type="text" placeholder="Search by Name">
+
+        <button class="reset" id="reset" >RESET</button>
+    </div>
+</div>
+
+<main>
+
+    <section class="user-data">
+
+    <div class="user-header">
+    <table>
+        <tr class="table-heading-1">
+            <th class="id">ID</th>
+            <th class="User-Avatar">User Avatar</th>
+            <th class="UserName">Full Name</th>
+            <th class="DOB">DOB</th>
+            <th class="Gender">Gender</th>
+            <th class="Location">Current Location</th>
+
+        </tr>
+
+
+    </table>
+    </div>
+    <div id="table-data">
+        <table class="myTable">
+            <tbody id="tbody">
+                <!-- <tr class="data-row">
+
+
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    </section>
+</main>
+<script src="../js/Users.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Order Page</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      
+        label{ 
+            padding:4px 0px;
+        }
+        .hide-row{
+            display:none;
+        }
+        .checkbox{
+            padding:20px 10px;
+        }
+    </style>
+    <head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <div class="menu" id="kafene">
+                        <img src="https://edu-web-fundamentals.web.app/static/media/logo.58169365.png" /> Kafene
+                    </div>
+                    <li class="nav"><a  id="orders-tab" href="./order.html">Orders</a></li>
+                    <li class="nav"><a href="./Products.html">Products</a></li>
+                    <li class="nav"><a href="./Users.html">Users</a></li>
+                    <li class="nav" class="logout" id="logout-show"><a href="#">Logout</a></li>
+                </ul>
+
+            </nav>
+        </header>
+        <main>
+            <div class="orders">
+                <h1>Orders</h1>
+            </div>
+            <div class="main">
+                <section>
+                    <div class="filter">
+                        <h3>Filter</h3>
+                        <div class="div-count">Count :<span class="count"></span> </div>
+                    </div>
+                    <div class="checkbox-div">
+
+
+                        <label><input
+                             type="checkbox" 
+                            class="checkbox"
+                             name="New" 
+                              id="first"
+                             onclick="filterDataInTable(event)" checked/> New</label>
+                        <label><input type="checkbox" 
+                            class="checkbox" 
+                            name="Packed" checked
+                            id="packed"
+                                onclick="filterDataInTable(event)" checked /> Packed</label>
+                        <label><input type="checkbox" 
+                            class="checkbox" 
+                            name="InTransit" id="InTransit"
+                            onclick="filterDataInTable(event)" checked /> InTransit</label>
+                        <label>
+                            <input type="checkbox"
+                             class="checkbox"
+                             name="Delivered" id="Delieved"
+                            onclick="filterDataInTable(event)" checked />Delivered</label>
+                    </div>
+                </section>
+                <section class="table-data">
+
+                    <div class="table-header">
+                        <table>
+                            <tr class="table-heading">
+                                <th class="table-heading" id="id">ID</th>
+                                <th class="table-heading" id="name">Customer</th>
+                                <th class="table-heading" id="date">Date</th>
+                                <th class="table-heading" id="amount">Amount</th>
+                                <th class="table-heading" id="status">status</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="table-data">
+                        <table>
+                            <tbody>
+                                <tr class="data-row">
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                   </div>
+                </section>
+       </main>
+        <!-- </div> -->
+<script>
+
+
+const url = "https://5fc1a1c9cb4d020016fe6b07.mockapi.io/api/v1/orders";
+// const logOut = document.querySelector(".logout-show");
+const countRow = document.querySelector(".count");
+const logout =document.querySelector("#logout-show")
+
+  logout.addEventListener("click",()=>{
+    location.href="./index.html";
+   localStorage.clear();
+});
+
+if (localStorage.getItem("loginStatus") !== "true") {
+  location.href = "./index.html";
+  localStorage.clear();
+}
+
+
+
+const data = async(url) => {
+    const res = await fetch(url)
+    console.log("async await api call")
+    return await res.json()
+}
+
+const fillDataInTable = () => {
+    const res = data(url);
+    res.then((response) => {
+        const tbody = document.querySelector('tbody');
+        for (row of response) {
+            const trow = document.createElement("tr")
+            trow.classList.add("data-row");
+            const col1 = document.createElement("td")
+            const col2 = document.createElement("td")
+            const col3 = document.createElement("td")
+            const col4 = document.createElement("td")
+            const col5 = document.createElement("td")
+
+            col1.classList.add('column1')
+            col1.innerHTML = row.id
+            col2.classList.add('column2')
+            col2.innerHTML = row.customerName
+            col3.classList.add('column3')
+            col3.innerHTML = `${row.orderDate} 
+            <br>${row.orderTime}`
+            col4.classList.add('column4')
+            col4.innerHTML = row.amount
+            col5.classList.add('orderstatus')
+            col5.innerHTML = row.orderStatus
+         
+            tbody.appendChild(trow)
+            trow.appendChild(col1)
+            trow.appendChild(col2)
+            trow.appendChild(col3)
+            trow.appendChild(col4)
+            trow.appendChild(col5)
+
+        }
+        countRow.innerHTML= response.length;
+    });
+};
+
+// const mycount= document.querySelector('.count')
+// console.log(mycount);
+
+
+
+const filterDataInTable= (e) => {
+    if(e.currentTarget.checked) {
+     
+      const trow = document.querySelectorAll(".data-row");
+      const filter = e.currentTarget.name;
+      for (let row of trow) {
+      
+        const mycheck = row.querySelector(".orderstatus");
+        if(mycheck.textContent.includes(filter)) {
+       
+          for(let obj of Object.entries(row.classList)) {
+            
+            if("hide-row" === obj[1]) {
+                console.log(true)
+                row.classList.remove("hide-row");
+                countRow.innerHTML =
+      document.querySelectorAll(".data-row").length -document.querySelectorAll(".hide-row").length;
+  console.log(countRow)+1;
+            }
+          }
+        }
+      }
+    } else {
+      const trow = document.querySelectorAll(".data-row");
+      const filter = e.currentTarget.name;
+      for (let row of trow) {
+        console.log(row)
+        const mycheck = row.querySelector(".orderstatus");
+        if(mycheck.textContent.includes(filter)) {
+            console.log("if is working")
+          for(let obj of Object.entries(row.classList)){
+            console.log("for is working")
+            if("hide-row" !== obj[1]) {
+                console.log(false)
+              row.classList.add("hide-row");   
+               countRow.innerHTML =
+      document.querySelectorAll(".data-row").length -document.querySelectorAll(".hide-row").length;
+  console.log(countRow);
+                          }
+          }
+        }
+      }
+    }
+    countRow.innerHTML =
+      document.querySelectorAll(".data-row").length -document.querySelectorAll(".hide-row").length-1;
+  console.log(countRow);
+  console.log(countRow.innerText)
+    };
+  
+  window.addEventListener("DOMContentLoaded",fillDataInTable);
+  const currentTab = window.location.href;
+  if (currentTab.includes("order.html")) {
+    document.querySelector("#orders-tab").classList.add("active-tab");
+    document.getElementById("orders-tab").style.color="#20b883";
+  }
+
+
+</script>
+</body>
+</head>
+</html>
